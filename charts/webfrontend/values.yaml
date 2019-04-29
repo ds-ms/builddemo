@@ -4,7 +4,7 @@
 fullnameOverride: webfrontend
 replicaCount: 1
 image:
-  repository: webfrontend
+  repository: atulmakshelm.azurecr.io/azooinmyluggage/builddemo
   tag: stable
   pullPolicy: IfNotPresent
 imagePullSecrets: []
@@ -13,7 +13,7 @@ imagePullSecrets: []
   # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
   #
   # This uses credentials from secret "myRegistryKeySecretName".
-  # - name: myRegistryKeySecretName
+  - name: atulmakshelm209d-auth
 service:
   type: ClusterIP
   port: 80
