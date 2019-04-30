@@ -44,10 +44,10 @@ stages:
         tags: |
           $(tag)
           
-    # - task: PublishPipelineArtifact@0
-    #   inputs:
-    #     artifactName: 'manifests'
-    #     targetPath: 'manifests'
+    - task: PublishPipelineArtifact@0
+      inputs:
+        artifactName: 'manifests'
+        targetPath: 'manifests'
 
     - task: PublishPipelineArtifact@0
       inputs:
