@@ -44,15 +44,15 @@ stages:
         tags: |
           $(tag)
           
-    - task: PublishPipelineArtifact@0
-      inputs:
-        artifactName: 'manifests'
-        targetPath: 'manifests'
+    # - task: PublishPipelineArtifact@0
+    #   inputs:
+    #     artifactName: 'manifests'
+    #     targetPath: 'manifests'
 
     - task: PublishPipelineArtifact@0
       inputs:
         artifactName: 'charts'
-        targetPath: 'charts'
+        targetPath: 'charts/webfrontend'
 
 - stage: Deploy
   displayName: Deploy stage
@@ -68,10 +68,10 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: DownloadPipelineArtifact@1
-            inputs:
-              artifactName: 'manifests'
-              downloadPath: '$(System.ArtifactsDirectory)/manifests'
+          # - task: DownloadPipelineArtifact@1
+          #   inputs:
+          #     artifactName: 'manifests'
+          #     downloadPath: '$(System.ArtifactsDirectory)/manifests'
 
           - task: DownloadPipelineArtifact@1
             inputs:
@@ -90,7 +90,7 @@ stages:
             displayName: bake
             inputs:
               action: bake
-              helmChart: '$(System.ArtifactsDirectory)/charts/webfrontend'
+              helmChart: '$(System.ArtifactsDirectory)/charts'
 
           - task: KubernetesManifest@1
             displayName: deploy
