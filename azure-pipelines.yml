@@ -109,6 +109,7 @@ stages:
     displayName: Deploy job
     pool:
       vmImage: $(vmImageName)
+    environment: 'azooinmyluggagebuilddemo-1324.demo1'
     strategy:
       runOnce:
         deploy:
