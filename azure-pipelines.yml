@@ -119,6 +119,12 @@ stages:
               artifactName: 'manifests'
               downloadPath: '$(System.ArtifactsDirectory)/manifests'
 
+          - task: KubernetesManifest@0
+            displayName: 'Create a new namespace'
+            inputs:
+              kubernetesServiceConnection: 'builddemo-production-master'
+              manifests: '$(System.ArtifactsDirectory)/manifests/pr-namespace.yml'
+
           - task: DownloadPipelineArtifact@1
             inputs:
               artifactName: 'charts'
@@ -129,7 +135,7 @@ stages:
             inputs:
               action: createSecret
               secretName: $(imagePullSecret)
-              namespace: $(k8sNamespace)
+              namespace: demopr
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
 
           - task: KubernetesManifest@1
@@ -142,7 +148,7 @@ stages:
             displayName: deploy
             inputs:
               kubernetesServiceConnection: 'builddemo-production-master'
-              namespace: $(k8sNamespace)
+              namespace: demopr
               manifests: $(bake.manifestsBundle)
               imagePullSecrets: $(imagePullSecret)
           # - task: KubernetesManifest@0
