@@ -6,4 +6,4 @@ metadata:
   labels:
     name: demopr
     azds.io/space: true 
-    azds.io/parent-space=default
+    azds.io/parent-space: default
