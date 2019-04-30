@@ -20,7 +20,7 @@ variables:
   # Kubernetes Namespace
   k8sNamespace: 'demo1'
   imagePullSecret: 'builddemo6c35-auth'
-  bake.manifestsBundle: ''
+  # bake.manifestsBundle: ''
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
